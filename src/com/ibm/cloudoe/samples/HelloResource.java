@@ -21,7 +21,8 @@ public class HelloResource {
 		// JSONObject sysEnv = new JSONObject(System.getenv());
 		
 //		return "Hi Bluemix World!";
-		return this.getVcapServices().toString();
+//		return this.getVcapServices().toString();
+		return this.getApiKey();
 	}
 	
 	public JSONObject getVcapServices() {
