@@ -45,5 +45,27 @@ public class HelloResource {
 //		  return vcapObject;
 		}	
 	
+	public String getApiKey() {
+		  String vcap = System.getenv("VCAP_SERVICES");
+
+		  if (vcap == null) return null;
+		  JSONObject vcapObject = null;
+		  JSONObject credential = null;
+		  String apikey = null;
+		  try {
+		     vcapObject = JSONObject.parse(vcap);
+		     JSONArray up = (JSONArray)vcapObject.get("user-provided");
+		     JSONObject up0 = (JSONObject)up.get(0);
+		     credential = (JSONObject)up0.get("credentials");
+		     apikey = (String)credential.get("apikey");
+
+		  }
+		  catch (IOException e) {
+		    e.printStackTrace();
+		  }
+		  return apikey;
+//		  return vcapObject;
+		}	
+		
 	
 }
